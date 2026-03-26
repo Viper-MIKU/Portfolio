@@ -7,10 +7,12 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import { Toaster } from "react-hot-toast";
 import Footer from "./components/Footer";
+import TouchEffect from "./components/TouchEffect";
 
 function App() {
   return (
-    <div className="bg-white dark:bg-gradient-to-br dark:from-black dark:via-zinc-900 dark:to-black text-black dark:text-white scroll-smooth">
+    <div className="bg-white dark:bg-gradient-to-br dark:from-black dark:via-zinc-900 dark:to-black 
+text-black dark:text-white scroll-smooth overflow-x-hidden">
 
       <Toaster 
         position="top-right"
@@ -25,14 +27,14 @@ function App() {
       />
 
       <Cursor />
+      <TouchEffect />   {/* ✅ THIS WAS MISSING */}
+
       <Navbar />
       <Hero />
       <About />
       <Skills />
       <Projects />
       <Contact />
-
-      {/* 🔥 ADD THIS */}
       <Footer />
 
     </div>

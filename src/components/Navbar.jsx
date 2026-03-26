@@ -1,11 +1,19 @@
 import { useState, useEffect } from "react";
-import { Moon, Sun, Linkedin, Github, Instagram, Download } from "lucide-react";
+import {
+  Moon,
+  Sun,
+  Linkedin,
+  Github,
+  Instagram,
+  Download
+} from "lucide-react";
 
 function Navbar() {
 
   const [darkMode, setDarkMode] = useState(false);
   const [active, setActive] = useState("home");
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   // THEME LOAD
   useEffect(() => {
@@ -28,7 +36,7 @@ function Navbar() {
     }
   };
 
-  // SMOOTH SCROLL TRACKING
+  // SCROLL TRACKING
   useEffect(() => {
 
     const sections = document.querySelectorAll("section");
@@ -73,41 +81,29 @@ function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 relative
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300
       ${scrolled
         ? "backdrop-blur-md bg-white/70 dark:bg-zinc-900/70 shadow-lg"
         : "bg-transparent"
       }`}
     >
 
-      {/* ❄️ SNOW EFFECT (LIGHTWEIGHT) */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-  {[...Array(9)].map((_, i) => (
-    <span key={i} className="snow" />
-  ))}
-</div>
-
-      <div className="max-w-6xl mx-auto px-6 md:px-10 flex justify-between items-center py-4 relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between items-center py-4">
 
         {/* LOGO */}
-        <div className="flex flex-col leading-none cursor-pointer group">
-
-          <span className="text-xl md:text-2xl font-bold text-emerald-500 dark:text-emerald-400 tracking-widest group-hover:scale-105 transition">
+        <div className="flex flex-col leading-none cursor-pointer">
+          <span className="text-xl font-bold text-emerald-500 dark:text-emerald-400 tracking-widest">
             ヴィナヤク
           </span>
-
           <span className="text-[10px] tracking-[6px] text-gray-500 dark:text-gray-400">
             MIRAI
           </span>
-
         </div>
 
-        {/* NAV LINKS */}
+        {/* DESKTOP NAV */}
         <div className="hidden md:flex gap-8 text-gray-700 dark:text-gray-300">
-
           {["home", "about", "skills", "projects", "contact"].map((item) => (
             <a key={item} href={`#${item}`} className={linkClass(item)}>
-
               {item.charAt(0).toUpperCase() + item.slice(1)}
 
               <span
@@ -115,42 +111,70 @@ function Navbar() {
                   active === item ? "w-full" : "w-0"
                 }`}
               />
-
             </a>
           ))}
-
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="flex gap-4 items-center text-gray-700 dark:text-gray-300">
+        <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
 
+          {/* RESUME */}
           <a
-  href="/resume.pdf"
-  download="Vinayak_Resume.pdf"
-  className="hover:text-emerald-400 transition transform hover:scale-110"
->
-  <Download />
-</a>
-
-          <a href="https://www.linkedin.com/in/vinayak-suryavanshi-9a29b2238" target="_blank">
-            <Linkedin className="hover:text-emerald-400 transition" />
+            href="/resume.pdf"
+            download="Vinayak_Resume.pdf"
+            className="hidden sm:block hover:text-emerald-400 transition"
+          >
+            <Download />
           </a>
 
+          {/* SOCIALS */}
           <a href="https://github.com/Viper-MIKU" target="_blank">
             <Github className="hover:text-emerald-400 transition" />
           </a>
 
-          <a href="https://www.instagram.com/vinayak_suryavanshi03" target="_blank">
-            <Instagram className="hover:text-emerald-400 transition" />
+          <a href="https://www.linkedin.com/in/vinayak-suryavanshi-9a29b2238" target="_blank">
+            <Linkedin className="hover:text-emerald-400 transition hidden sm:block" />
           </a>
 
+          <a href="https://www.instagram.com/vinayak_suryavanshi03" target="_blank">
+            <Instagram className="hover:text-emerald-400 transition hidden sm:block" />
+          </a>
+
+          {/* THEME */}
           <button onClick={toggleTheme}>
             {darkMode ? <Sun /> : <Moon />}
+          </button>
+
+          {/* MOBILE MENU BUTTON */}
+          <button
+            className="md:hidden text-2xl"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            ☰
           </button>
 
         </div>
 
       </div>
+
+      {/* MOBILE MENU */}
+      {menuOpen && (
+        <div className="md:hidden flex flex-col items-center gap-6 py-6 
+        bg-white dark:bg-zinc-900 shadow-md">
+
+          {["home", "about", "skills", "projects", "contact"].map((item) => (
+            <a
+              key={item}
+              href={`#${item}`}
+              onClick={() => setMenuOpen(false)}
+              className="text-lg hover:text-emerald-400"
+            >
+              {item.charAt(0).toUpperCase() + item.slice(1)}
+            </a>
+          ))}
+
+        </div>
+      )}
 
     </nav>
   );

@@ -12,9 +12,11 @@ section {
   scroll-margin-top: 90px;
 }
 
-/* HIDE DEFAULT CURSOR */
-body {
-  cursor: none;
+/* ✅ HIDE CURSOR ONLY ON DESKTOP */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
 }
 
 /* CURSOR BASE */
@@ -44,15 +46,12 @@ body {
   border-radius: 50%;
 }
 
-/* LIGHT TRANSITIONS ONLY WHERE NEEDED */
+/* LIGHT TRANSITIONS */
 a, button {
   transition: color 0.2s ease, transform 0.2s ease;
 }
-/* BUTTERY SMOOTH SCROLL */
-html {
-  scroll-behavior: smooth;
-}
 
+/* TEXT RENDERING */
 body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -62,21 +61,8 @@ body {
 * {
   backface-visibility: hidden;
 }
-/* SNOW PARTICLES */
-.snow {
-  position: absolute;
-  top: -10px;
-  width: 6px;
-  height: 6px;
-  background: white;
-  border-radius: 50%;
-  opacity: 0.7;
-  animation: snowFall linear infinite;
-}
 
-/* RANDOM POSITIONS */
-/* SNOW EFFECT */
-/* ❄️ SNOW ULTRA */
+/* ❄️ SNOW EFFECT */
 .snow {
   position: absolute;
   top: -10px;
@@ -84,9 +70,8 @@ body {
   height: 4px;
   border-radius: 50%;
   background: rgba(16,185,129,0.8);
-box-shadow: 0 0 6px rgba(16,185,129,0.6);
+  box-shadow: 0 0 6px rgba(16,185,129,0.6);
   opacity: 0.8;
-
   animation: snowFall linear infinite;
   will-change: transform;
   filter: blur(0.3px);
@@ -103,7 +88,7 @@ box-shadow: 0 0 6px rgba(16,185,129,0.6);
   transform: scale(1.2);
 }
 
-/* POSITIONS + SPEED VARIATION */
+/* POSITIONS */
 .snow:nth-child(1) { left: 5%;  animation-duration: 9s; }
 .snow:nth-child(2) { left: 15%; animation-duration: 11s; }
 .snow:nth-child(3) { left: 25%; animation-duration: 8s; }
@@ -114,7 +99,7 @@ box-shadow: 0 0 6px rgba(16,185,129,0.6);
 .snow:nth-child(8) { left: 85%; animation-duration: 11.5s; }
 .snow:nth-child(9) { left: 95%; animation-duration: 10s; }
 
-/* 🌬️ NATURAL FALL + SIDE DRIFT */
+/* SNOW ANIMATION */
 @keyframes snowFall {
   0% {
     transform: translateY(-10px) translateX(0px);
@@ -131,6 +116,31 @@ box-shadow: 0 0 6px rgba(16,185,129,0.6);
 
   100% {
     transform: translateY(90px) translateX(-10px);
+    opacity: 0;
+  }
+}
+
+/* ❌ DISABLE SNOW ON MOBILE (performance boost) */
+@media (max-width: 768px) {
+  .snow {
+    display: none;
+  }
+}
+
+/* 🌊 RIPPLE EFFECT (MOBILE TAP) */
+.ripple {
+  position: fixed;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.4);
+  transform: scale(0);
+  animation: ripple-animation 0.6s ease-out;
+  pointer-events: none;
+  z-index: 50;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(2.5);
     opacity: 0;
   }
 }

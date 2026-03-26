@@ -10,22 +10,17 @@ function Footer() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.4 }}
-        className="max-w-5xl mx-auto px-6 py-6 
-        flex flex-col md:flex-row items-center justify-between gap-4"
+        className="max-w-6xl mx-auto px-4 sm:px-6 py-6 
+        flex flex-col items-center gap-4 text-center"
       >
 
-        {/* LEFT */}
-        <h2 className="text-base font-medium text-emerald-500 dark:text-emerald-400">
+        {/* NAME */}
+        <h2 className="text-sm sm:text-base font-medium text-emerald-500 dark:text-emerald-400">
           Viper
         </h2>
 
-        {/* CENTER */}
-        <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
-          © {new Date().getFullYear()} Vinayak
-        </p>
-
-        {/* RIGHT */}
-        <div className="flex gap-5 text-gray-500 dark:text-gray-400">
+        {/* SOCIALS */}
+        <div className="flex gap-6 text-gray-500 dark:text-gray-400">
 
           <a
             href="https://github.com/"
@@ -46,6 +41,11 @@ function Footer() {
           </a>
 
         </div>
+
+        {/* COPYRIGHT */}
+        <p className="text-xs text-gray-500 dark:text-gray-400">
+          © {new Date().getFullYear()} Vinayak. All rights reserved.
+        </p>
 
       </motion.div>
     </footer>

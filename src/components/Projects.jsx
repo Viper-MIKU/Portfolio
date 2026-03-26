@@ -39,23 +39,23 @@ function Projects() {
   return (
     <section
       id="projects"
-      className="min-h-screen w-full py-24"
+      className="w-full py-16 md:py-24"
     >
 
-      <div className="px-6 md:px-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* HEADING */}
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-4xl md:text-5xl font-bold text-emerald-500 dark:text-emerald-400 mb-12"
+          className="text-2xl sm:text-3xl md:text-5xl font-bold text-emerald-500 dark:text-emerald-400 mb-10 md:mb-12 text-center md:text-left"
         >
           Projects
         </motion.h2>
 
         {/* GRID */}
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
 
           {projects.map((project, index) => (
 
@@ -68,19 +68,19 @@ function Projects() {
               whileTap={{ scale: 0.97 }}
               transition={{ duration: 0.2 }}
               className="group border border-gray-200 dark:border-zinc-800 
-              rounded-xl p-6 
+              rounded-xl p-5 sm:p-6 
               bg-white/60 dark:bg-zinc-900/30 
               transition duration-200 
               hover:border-emerald-400"
             >
 
               {/* TITLE */}
-              <h3 className="text-xl font-semibold group-hover:text-emerald-400 transition duration-200">
+              <h3 className="text-lg sm:text-xl font-semibold group-hover:text-emerald-400 transition duration-200">
                 {project.title}
               </h3>
 
               {/* DESC */}
-              <p className="mt-2 text-gray-600 dark:text-gray-400">
+              <p className="mt-2 text-sm sm:text-base text-gray-600 dark:text-gray-400">
                 {project.desc}
               </p>
 

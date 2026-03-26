@@ -76,22 +76,22 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="min-h-screen w-full flex justify-center items-center py-24"
+      className="w-full py-16 md:py-24"
     >
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="flex flex-col w-full max-w-md gap-6 px-6 md:px-0"
+        className="flex flex-col w-full max-w-lg mx-auto gap-6 px-4 sm:px-6"
       >
 
-        <h2 className="text-4xl font-bold text-emerald-500 dark:text-emerald-400">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-500 dark:text-emerald-400 text-center">
           Get In Touch
         </h2>
 
         {/* FORM */}
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:gap-5">
 
           <input
             name="name"

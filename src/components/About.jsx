@@ -4,29 +4,29 @@ function About() {
   return (
     <section
       id="about"
-      className="min-h-screen w-full py-24"
+      className="w-full py-16 md:py-24"
     >
 
-      <div className="px-6 md:px-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
         {/* HEADER */}
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-4xl md:text-5xl font-bold text-emerald-500 dark:text-emerald-400"
+          className="text-2xl sm:text-3xl md:text-5xl font-bold text-emerald-500 dark:text-emerald-400"
         >
           About Me
         </motion.h2>
 
-        <div className="w-20 h-[2px] bg-emerald-500 dark:bg-emerald-400 mt-4 mb-10" />
+        <div className="w-16 sm:w-20 h-[2px] bg-emerald-500 dark:bg-emerald-400 mt-3 sm:mt-4 mb-8 sm:mb-10" />
 
         {/* INTRO */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-gray-600 dark:text-gray-300 text-lg max-w-3xl leading-relaxed"
+          className="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg max-w-3xl leading-relaxed"
         >
           I focus on building intelligent real-time systems using Machine Learning 
           and Computer Vision that interact naturally with users. My goal is to create 
@@ -34,7 +34,7 @@ function About() {
         </motion.p>
 
         {/* GRID */}
-        <div className="grid md:grid-cols-2 gap-10 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mt-10 md:mt-16">
 
           {[
             {
@@ -44,16 +44,16 @@ function About() {
                   <p className="font-medium">
                     Diploma in Computer Science
                   </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                     MSBTE | Samarth Samaj Shivajirao S. Jondhale Polytechnic (2022)
                   </p>
 
-                  <div className="mt-4" />
+                  <div className="mt-3" />
 
                   <p className="font-medium">
                     Bachelor of Computer Science (B.Tech)
                   </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                     University of Mumbai (2025)
                   </p>
                 </>
@@ -66,7 +66,7 @@ function About() {
                   <p className="font-medium">
                     Machine Learning
                   </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                     Computer Vision & Real-time AI Systems
                   </p>
                 </>
@@ -109,21 +109,21 @@ function About() {
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.08 }}
               className="border border-gray-200 dark:border-zinc-800 
-              rounded-xl p-6 
+              rounded-xl p-5 sm:p-6 
               bg-white/60 dark:bg-zinc-900/30 
               transition duration-200 hover:border-emerald-400"
             >
 
               {/* TITLE */}
-              <h3 className="text-sm mb-4 tracking-widest text-emerald-500 dark:text-emerald-400">
+              <h3 className="text-xs sm:text-sm mb-3 sm:mb-4 tracking-widest text-emerald-500 dark:text-emerald-400">
                 {item.title}
               </h3>
 
               {/* CONTENT */}
-              <div>
+              <div className="text-sm sm:text-base">
                 {item.content}
               </div>
 
