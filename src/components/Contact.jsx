@@ -1,6 +1,7 @@
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 function Contact() {
 
@@ -50,23 +51,23 @@ function Contact() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
+      await emailjs.send(
+        "service_dvd4acq",
+        "template_p5knstw",
+        {
+          name: form.name,
+          email: form.email,
+          message: form.message,
         },
-        body: JSON.stringify(form)
-      });
+        "8rrkTdM_738nDqp41"
+      );
 
-      if (res.ok) {
-        toast.success("Message Sent!");
-        setForm({ name: "", email: "", message: "" });
-      } else {
-        toast.error("Failed to send");
-      }
+      toast.success("Message Sent ✅");
+      setForm({ name: "", email: "", message: "" });
 
     } catch (error) {
-      toast.error("Server error");
+      console.error(error);
+      toast.error("Failed to send ❌");
     }
 
     setLoading(false);
@@ -92,7 +93,6 @@ function Contact() {
         {/* FORM */}
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
 
-          {/* NAME */}
           <input
             name="name"
             value={form.name}
@@ -111,7 +111,6 @@ function Contact() {
             transition duration-300"
           />
 
-          {/* EMAIL */}
           <input
             name="email"
             value={form.email}
@@ -130,7 +129,6 @@ function Contact() {
             transition duration-300"
           />
 
-          {/* MESSAGE */}
           <textarea
             name="message"
             value={form.message}
@@ -150,7 +148,6 @@ function Contact() {
             transition duration-300 resize-none"
           />
 
-          {/* BUTTON */}
           <button
             type="submit"
             disabled={loading}
