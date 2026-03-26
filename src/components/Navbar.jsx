@@ -1,12 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  Moon,
-  Sun,
-  Linkedin,
-  Github,
-  Instagram,
-  Download
-} from "lucide-react";
+import { Moon, Sun, Linkedin, Github, Instagram, Download, Menu, X } from "lucide-react";
 
 function Navbar() {
 
@@ -38,33 +31,20 @@ function Navbar() {
 
   // SCROLL TRACKING
   useEffect(() => {
-
     const sections = document.querySelectorAll("section");
-    let ticking = false;
 
     const handleScroll = () => {
+      let current = "";
 
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 120 && rect.bottom >= 120) {
+          current = section.id;
+        }
+      });
 
-          let current = "";
-
-          sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-
-            if (rect.top <= 120 && rect.bottom >= 120) {
-              current = section.id;
-            }
-          });
-
-          setActive(prev => (prev !== current ? current : prev));
-          setScrolled(window.scrollY > 50);
-
-          ticking = false;
-        });
-
-        ticking = true;
-      }
+      setActive(current);
+      setScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -73,7 +53,7 @@ function Navbar() {
   }, []);
 
   const linkClass = (section) =>
-    `relative transition duration-200 ${
+    `block py-2 text-lg ${
       active === section
         ? "text-emerald-400"
         : "hover:text-emerald-400"
@@ -92,65 +72,54 @@ function Navbar() {
 
         {/* LOGO */}
         <div className="flex flex-col leading-none cursor-pointer">
-          <span className="text-xl font-bold text-emerald-500 dark:text-emerald-400 tracking-widest">
+          <span className="text-lg sm:text-xl font-bold text-emerald-500 tracking-widest">
             ヴィナヤク
           </span>
-          <span className="text-[10px] tracking-[6px] text-gray-500 dark:text-gray-400">
+          <span className="text-[10px] tracking-[5px] text-gray-500">
             MIRAI
           </span>
         </div>
 
-        {/* DESKTOP NAV */}
+        {/* DESKTOP LINKS */}
         <div className="hidden md:flex gap-8 text-gray-700 dark:text-gray-300">
           {["home", "about", "skills", "projects", "contact"].map((item) => (
-            <a key={item} href={`#${item}`} className={linkClass(item)}>
+            <a key={item} href={`#${item}`} className="hover:text-emerald-400">
               {item.charAt(0).toUpperCase() + item.slice(1)}
-
-              <span
-                className={`absolute left-0 -bottom-1 h-[2px] bg-emerald-400 transition-all duration-200 ${
-                  active === item ? "w-full" : "w-0"
-                }`}
-              />
             </a>
           ))}
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+        <div className="flex items-center gap-3 sm:gap-4 text-gray-700 dark:text-gray-300">
 
           {/* RESUME */}
-          <a
-            href="/resume.pdf"
-            download="Vinayak_Resume.pdf"
-            className="hidden sm:block hover:text-emerald-400 transition"
-          >
-            <Download />
+          <a href="/resume.pdf" download>
+            <Download size={18} className="hover:text-emerald-400 transition" />
           </a>
 
-          {/* SOCIALS */}
-          <a href="https://github.com/Viper-MIKU" target="_blank">
-            <Github className="hover:text-emerald-400 transition" />
+          {/* LINKEDIN */}
+          <a href="https://www.linkedin.com/" target="_blank">
+            <Linkedin size={18} className="hover:text-emerald-400 transition" />
           </a>
 
-          <a href="https://www.linkedin.com/in/vinayak-suryavanshi-9a29b2238" target="_blank">
-            <Linkedin className="hover:text-emerald-400 transition hidden sm:block" />
+          {/* GITHUB */}
+          <a href="https://github.com/" target="_blank">
+            <Github size={18} className="hover:text-emerald-400 transition" />
           </a>
 
-          <a href="https://www.instagram.com/vinayak_suryavanshi03" target="_blank">
-            <Instagram className="hover:text-emerald-400 transition hidden sm:block" />
+          {/* INSTAGRAM */}
+          <a href="https://www.instagram.com/" target="_blank">
+            <Instagram size={18} className="hover:text-emerald-400 transition" />
           </a>
 
           {/* THEME */}
           <button onClick={toggleTheme}>
-            {darkMode ? <Sun /> : <Moon />}
+            {darkMode ? <Sun size={18} /> : <Moon size={18} />}
           </button>
 
           {/* MOBILE MENU BUTTON */}
-          <button
-            className="md:hidden text-2xl"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            ☰
+          <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
 
         </div>
@@ -159,15 +128,14 @@ function Navbar() {
 
       {/* MOBILE MENU */}
       {menuOpen && (
-        <div className="md:hidden flex flex-col items-center gap-6 py-6 
-        bg-white dark:bg-zinc-900 shadow-md">
+        <div className="md:hidden bg-white dark:bg-zinc-900 border-t border-gray-200 dark:border-zinc-800 px-6 pb-4">
 
           {["home", "about", "skills", "projects", "contact"].map((item) => (
             <a
               key={item}
               href={`#${item}`}
               onClick={() => setMenuOpen(false)}
-              className="text-lg hover:text-emerald-400"
+              className={linkClass(item)}
             >
               {item.charAt(0).toUpperCase() + item.slice(1)}
             </a>
