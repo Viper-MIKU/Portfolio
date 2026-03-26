@@ -2,6 +2,14 @@ import { useEffect, useRef } from "react";
 
 function Cursor() {
 
+  // ✅ Detect touch device (mobile/tablet)
+  const isTouchDevice =
+    typeof window !== "undefined" &&
+    ("ontouchstart" in window || navigator.maxTouchPoints > 0);
+
+  // ❌ Disable cursor on mobile
+  if (isTouchDevice) return null;
+
   const dotRef = useRef(null);
   const ringRef = useRef(null);
 
@@ -21,7 +29,6 @@ function Cursor() {
     };
 
     const animate = () => {
-      // smooth trailing (adjust 0.15 → speed)
       ring.current.x += (mouse.current.x - ring.current.x) * 0.15;
       ring.current.y += (mouse.current.y - ring.current.y) * 0.15;
 

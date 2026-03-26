@@ -12,7 +12,14 @@ import TouchEffect from "./components/TouchEffect";
 function App() {
   return (
     <div className="bg-white dark:bg-gradient-to-br dark:from-black dark:via-zinc-900 dark:to-black 
-text-black dark:text-white scroll-smooth overflow-x-hidden">
+text-black dark:text-white scroll-smooth overflow-x-hidden relative">
+
+      {/* ❄️ GLOBAL SNOW */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        {[...Array(12)].map((_, i) => (
+          <span key={i} className="snow" />
+        ))}
+      </div>
 
       <Toaster 
         position="top-right"
@@ -27,7 +34,7 @@ text-black dark:text-white scroll-smooth overflow-x-hidden">
       />
 
       <Cursor />
-      <TouchEffect />   {/* ✅ THIS WAS MISSING */}
+      <TouchEffect />
 
       <Navbar />
       <Hero />
