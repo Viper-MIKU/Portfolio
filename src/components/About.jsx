@@ -4,17 +4,20 @@ function About() {
   return (
     <section
       id="about"
-      className="w-full py-16 md:py-24"
+      className="w-full py-16 md:py-20"
     >
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
+
+        {/* 🔥 SECTION SEPARATOR */}
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent mb-10" />
 
         {/* HEADER */}
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-2xl sm:text-3xl md:text-5xl font-bold text-emerald-500 dark:text-emerald-400"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-emerald-500 dark:text-emerald-400"
         >
           About Me
         </motion.h2>
@@ -34,7 +37,7 @@ function About() {
         </motion.p>
 
         {/* GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 mt-10 md:mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-10 md:mt-14">
 
           {[
             {
@@ -111,10 +114,12 @@ function About() {
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.08 }}
+              whileHover={{ y: -4 }}
               className="border border-gray-200 dark:border-zinc-800 
               rounded-xl p-5 sm:p-6 
               bg-white/60 dark:bg-zinc-900/30 
-              transition duration-200 hover:border-emerald-400"
+              backdrop-blur-md
+              transition duration-200 hover:border-emerald-400 hover:shadow-lg hover:shadow-emerald-500/10"
             >
 
               {/* TITLE */}

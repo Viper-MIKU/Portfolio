@@ -76,70 +76,70 @@ function Hero() {
 
   return (
     <section
-  id="home"
-  className="w-full flex items-center justify-center relative py-20 md:py-32 overflow-hidden"
->
+      id="home"
+      className="w-full min-h-[85vh] flex items-center justify-center relative overflow-hidden"
+    >
 
-  {/* BACKGROUND */}
-  <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
-    <div className="absolute w-[250px] sm:w-[350px] h-[250px] sm:h-[350px] bg-emerald-400/10 blur-3xl top-[-100px] left-[-80px]" />
-    <div className="absolute w-[220px] sm:w-[300px] h-[220px] sm:h-[300px] bg-cyan-400/10 blur-3xl bottom-[-100px] right-[-80px]" />
-  </div>
+      {/* BACKGROUND */}
+      <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+        <div className="absolute w-[250px] sm:w-[350px] h-[250px] sm:h-[350px] bg-emerald-400/10 blur-3xl top-[-100px] left-[-80px]" />
+        <div className="absolute w-[220px] sm:w-[300px] h-[220px] sm:h-[300px] bg-cyan-400/10 blur-3xl bottom-[-100px] right-[-80px]" />
+      </div>
 
-  {/* CONTENT */}
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, ease: "easeOut" }}
-    className="text-center px-4 sm:px-6 max-w-2xl mx-auto"
-  >
-
-    {/* NAME */}
-    <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight">
-      Hi, I'm Vinayak
-    </h1>
-
-    {/* ROLE */}
-    <p className="mt-4 text-lg sm:text-xl font-semibold text-emerald-500 dark:text-emerald-400 min-h-[28px]">
-      {displayRole}
-      <span className="ml-1 animate-pulse">|</span>
-    </p>
-
-    {/* SUBTEXT */}
-    <p className="mt-2 text-gray-600 dark:text-gray-400 text-sm sm:text-base min-h-[20px]">
-      {displaySub}
-    </p>
-
-    {/* BUTTONS */}
-    <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-
-      <motion.a
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.97 }}
-        href="#projects"
-        className="border border-emerald-500 dark:border-emerald-400 px-6 py-2 rounded-lg 
-        hover:bg-emerald-500 dark:hover:bg-emerald-400 
-        hover:text-black transition duration-200"
+      {/* CONTENT */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="text-center px-4 sm:px-6 max-w-2xl mx-auto"
       >
-        Explore My Work
-      </motion.a>
 
-      <motion.a
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.97 }}
-        href="#contact"
-        className="border border-emerald-500 dark:border-emerald-400 px-6 py-2 rounded-lg 
-        hover:bg-emerald-500 dark:hover:bg-emerald-400 
-        hover:text-black transition duration-200"
-      >
-        Get In Touch
-      </motion.a>
+        {/* NAME */}
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight leading-tight">
+          Hi, I'm Vinayak
+        </h1>
 
-    </div>
+        {/* ROLE */}
+        <p className="mt-4 text-lg sm:text-xl font-semibold text-emerald-500 dark:text-emerald-400 min-h-[28px]">
+          {displayRole}
+          <span className="ml-1 animate-pulse">|</span>
+        </p>
 
-  </motion.div>
+        {/* SUBTEXT */}
+        <p className="mt-2 text-gray-600 dark:text-gray-400 text-sm sm:text-base min-h-[20px]">
+          {displaySub}
+        </p>
 
-</section>
+        {/* BUTTONS */}
+        <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+            href="#projects"
+            className="border border-emerald-500 dark:border-emerald-400 px-6 py-2 rounded-lg 
+            hover:bg-emerald-500 dark:hover:bg-emerald-400 
+            hover:text-black transition duration-200"
+          >
+            Explore My Work
+          </motion.a>
+
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+            href="#contact"
+            className="border border-emerald-500 dark:border-emerald-400 px-6 py-2 rounded-lg 
+            hover:bg-emerald-500 dark:hover:bg-emerald-400 
+            hover:text-black transition duration-200"
+          >
+            Get In Touch
+          </motion.a>
+
+        </div>
+
+      </motion.div>
+
+    </section>
   );
 }
 
