@@ -144,3 +144,10 @@ body {
     opacity: 0;
   }
 }
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  scroll-padding-top: 80px;
+}
