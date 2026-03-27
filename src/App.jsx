@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import { Toaster } from "react-hot-toast";
 import Footer from "./components/Footer";
 import TouchEffect from "./components/TouchEffect";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ text-black dark:text-white scroll-smooth overflow-x-hidden relative">
       <Contact />
       <Footer />
 
+      <SpeedInsights />
     </div>
   );
 }
