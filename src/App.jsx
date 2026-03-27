@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import { Toaster } from "react-hot-toast";
 import Footer from "./components/Footer";
 import TouchEffect from "./components/TouchEffect";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
@@ -43,6 +44,9 @@ text-black dark:text-white scroll-smooth overflow-x-hidden relative">
       <Projects />
       <Contact />
       <Footer />
+
+      {/* ✅ ANALYTICS */}
+      <Analytics />
 
     </div>
   );

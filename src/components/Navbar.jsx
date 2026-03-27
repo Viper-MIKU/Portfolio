@@ -93,9 +93,13 @@ function Navbar() {
         <div className="flex items-center gap-3 sm:gap-4 text-gray-700 dark:text-gray-300">
 
           {/* RESUME */}
-          <a href="/resume.pdf" download>
-            <Download size={18} className="hover:text-emerald-400 transition" />
-          </a>
+          <a
+  href="/resume.pdf"
+  download="Vinayak_Resume.pdf"
+  className="hover:text-emerald-400 transition"
+>
+  <Download size={18} />
+</a>
 
           {/* LINKEDIN */}
           <a href="https://www.linkedin.com/" target="_blank">
