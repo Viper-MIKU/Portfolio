@@ -109,7 +109,7 @@ function Navbar() {
           </a>
 
           {/* GITHUB */}
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/Viper-MIKU" target="_blank" rel="noopener noreferrer">
             <Github size={18} className="hover:text-emerald-400 transition" />
           </a>
 
