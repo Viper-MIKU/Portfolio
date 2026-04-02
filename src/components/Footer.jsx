@@ -26,7 +26,7 @@ function Footer() {
         <div className="flex gap-6 text-gray-500 dark:text-gray-400">
 
           <a
-            href="https://github.com/"
+            href="https://github.com/Viper-MIKU"
             target="_blank"
             rel="noopener noreferrer"
             className="transition duration-200 hover:text-emerald-400 hover:scale-110"
